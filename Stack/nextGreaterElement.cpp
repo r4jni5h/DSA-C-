@@ -33,5 +33,6 @@ int main(){
     vector<int> ans ={0,0,0,0,0};
 
     nextGreater(arr,ans);
+    cout<<"Complete";
     return 0;
 }
