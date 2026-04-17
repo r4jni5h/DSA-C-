@@ -6,8 +6,8 @@ using namespace std;
 int main(){
     map<int, string> m;
 
-    m[110]="Rajnish";
-    m[111]="Karan";
+    m[111]="Rajnish";
+    m[110]="Karan";
     m[112]="Vyank";
 
     for(auto it:m){
