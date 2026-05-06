@@ -1,31 +1,66 @@
 #include<iostream>
-#include<vector>
+#include <vector>
 using namespace std;
 
-vector<int> threeCommon(vector<int> arr,vector<int> arr2,vector<int> arr3){
-    int n = arr.size();
-    int m = arr2.size();
-    int l = arr3.size();
-    for(int i=0; i<n; i++){
-        int st1 = 0;
-        int end1 = arr2.size()-1;
-        int ans = 0;
-        while(st1>end1){
-            int mid1 = (st1+end1)/2;
-            if(arr[i]==arr2[mid1]){
-                ans = arr2[mid1];
+vector<int> findCommonElements(vector<int> a, vector<int> b, vector<int> c){
+        //Write your code here   
+        vector<int> ans;
+        for(int i=0;i<a.size();i++){
+            int a_b_comm = 0;
+            int st = 0;
+            int end = b.size()-1;
+            while(st <= end){
+                int mid = (st + end)/2;
+                if(b[mid]==a[i]){
+                    a_b_comm = b[mid];
+                }
+                if(b[mid]<a[i]){
+                    st = mid+1;
+                }else{
+                    end = mid-1;
+                }
             }
-            if()
+            for(int j=0;j<c.size();j++){
+                if(a_b_comm == c[j]){
+                    ans.push_back(c[j]);
+                }
+            }
+            
+        }
+
+        return ans;    
+    }
+
+int main()
+{
+    int n, m, k;
+    cin >> n >> m >> k;
+    vector<int> a(n);
+    for(int i=0;i<n;i++) {
+        cin >> a[i];
+    }
+    vector<int> b(m);
+    for(int i=0;i<m;i++) {
+        cin >> b[i];
+    }
+    vector<int> c(k);
+    for(int i=0;i<k;i++) {
+        cin >> c[i];
+    }
+    vector<int> ans = findCommonElements(a,b,c);
+    n = ans.size();
+    if(n == 0) {
+        cout << -1 << endl;
+    }
+    else {
+        for(int i=0;i<n;i++) {
+            if(i == n-1) {
+                cout << ans[i] << endl;
+            }
+            else {
+                cout << ans[i] << " ";
+            }
         }
     }
-}
-
-int main(){
-    vector<int> arr = {1,2,3,4,5,6};
-    vector<int> arr = {1,3,4,6};
-    vector<int> arr = {1,5,6};
-
-
-
     return 0;
 }
