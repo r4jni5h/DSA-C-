@@ -8,10 +8,9 @@ int larSubarray(vector<int> arr){
     int ans = 0;
     for(int j=0; j<arr.size(); j++){
         sum += arr[j];
-
         if(m.count(sum)){
             int currLen = j - m[sum];
-            ans = max(ans,currLen);
+            ans = max(ans, currLen);
         }else{
             m[sum] = j;
         }
