@@ -14,14 +14,14 @@ public:
 };
 
 void bellmanFord(int src, int V, vector<vector<Edge>> graph){
-
     vector<int> dist(V, INT_MAX);
     dist[src] = 0;
-    for(int i=0; i<V; i++){
+
+    for(int i=0; i<V-1; i++){
         for(int u=0; u<V; u++){
-            for(Edge e : graph[u]){
+            for(Edge e: graph[u]){
                 if(dist[e.v] > dist[u] + e.wt){
-                    dist[e.v] = dist[u]+e.wt;
+                    dist[e.v] = dist[u] + e.wt;
                 }
             }
         }
@@ -50,4 +50,6 @@ int main(){
     
 
     bellmanFord(0, V, graph);
+
+    return 0;
 }
